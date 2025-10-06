@@ -6,7 +6,7 @@ import { MdCheckCircleOutline, MdDashboard, MdDns, MdOutlineSchedule, MdVerified
 export const MENU_NAVIGATION_ITEMS = [
 	{
 		title: "Abrir Atendimento",
-		path: "/abertura-atendimento",
+		path: "/tickets/new",
 		icon: IoMdAddCircleOutline,
 	},
   {
@@ -16,35 +16,35 @@ export const MENU_NAVIGATION_ITEMS = [
   },
   {
     title: "Clientes",
-    path: "/clientes",
+    path: "/clients",
     icon: FaCircleUser,
   },
   {
     title: "Atendimentos",
-    path: "/chamados/todos",
+    path: "/tickets",
     icon: MdDns,
   },
   {
     title: "Novos",
-    path: "/chamados/novos",
+    path: "/tickets",
     icon: MdVerified,
     status: ["New"],
   },
   {
     title: "Em Atendimento",
-    path: "/chamados/em-atendimento",
+    path: "/tickets",
     icon: MdOutlineSchedule,
     status: ["Em andamento"],
   },
   {
     title: "Em Validação",
-    path: "/chamados/em-validacao",
+    path: "/tickets",
     icon: GrTest,
     status: ["Em andamento"],
   },
   {
     title: "Concluídos",
-    path: "/chamados/concluidos",
+    path: "/tickets/concluidos",
     icon: MdCheckCircleOutline,
     status: ["Resolvido"],
   },

@@ -13,8 +13,14 @@
 
 .input {
   border: 1px solid #e4e4e7ff;
-  background-color: #f7f7f8;
+  background-color: #fefefe;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 14px;
+
+  &:disabled {
+    background-color: #f7f7f8;
+    cursor: not-allowed;
+  }
+
 }

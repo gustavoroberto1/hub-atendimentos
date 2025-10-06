@@ -1,7 +1,30 @@
-export default function NewClient() {
+"use client";
+
+import { ClientForm } from "@/components/ClientForm";
+import { PageTitle } from "@/components/PageTitle";
+import { useRouter } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
+import styles from "./styles.module.css";
+
+export default function EditClient() {
+  const router = useRouter();
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
-    <div>
-      <h1>Edit Client Page</h1>
+    <div className={styles.container}>
+      <div className={styles.titleSection}>
+        <PageTitle
+          title="Editar Cliente"
+          subtitle="Altere os dados do cliente no sistema"
+        />
+        <button className={styles.button} onClick={handleGoBack}>
+          <FaArrowLeft size={24} /> Voltar
+        </button>
+      </div>
+
+      <ClientForm onGoBack={handleGoBack} />
     </div>
   );
 }

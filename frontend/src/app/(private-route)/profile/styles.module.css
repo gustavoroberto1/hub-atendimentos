@@ -19,16 +19,17 @@
   max-height: 40px;
   width: 100%;
   padding: 12px 16px;
-  background-color: #222222;
-  color: #ffffff;
+  background-color: transparent;
+  color: #222222;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
   font-weight: 600;
+  border: 1px solid #222222;
 
   &:hover {
-    background-color: #333333;
+    background-color: #f1f1f1;
   }
 }
 
@@ -49,106 +50,100 @@
 
 .cardHeader {
   display: flex;
+  margin-bottom: 16px;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardHeader p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.cardHeaderInfo {
+  display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
   width: 100%;
 }
 
-.cardHeader h2 {
+.cardHeaderInfo h2 {
   font-size: 16px;
   font-weight: 600;
   color: #000000;
 }
 
 .cardContent {
-  background-color: #f9fafb;
-  width: 100%;
-  display: flex;
-  flex: 1;
-}
-
-.table tr {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 3fr 2fr 1fr 2fr 0.5fr;
-  border-bottom: 1px solid #dddddd;
-}
-
-.table thead tr th {
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333333;
-}
-
-.table tbody tr th {
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #333333;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.clientInfo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start !important;
-  gap: 4px;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
+  gap: 16px;
 }
 
-.clientInfo span {
-  font-weight: 700;
+.contentAccount {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contentAccount .info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contentAccount .info strong {
+  font-size: 14px;
   color: #222222;
+
 }
 
-.clientInfo p {
-  font-weight: 400;
-  color: #666666;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end !important;
-}
-
-.actions div {
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.actions div:hover {
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-}
-
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 12px;
+.contentAccount .info span {
   font-size: 14px;
+  color: #6b7280;
+}
+
+.containerAvatar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.containerAvatar p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  background-color: #222222;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 60px;
   font-weight: 700;
-  border-radius: 8px;
+  position: relative;
+  margin-bottom: 16px;
 }
 
-.status.active {
-  background-color: #d4edda;
-  color: #155724;
+
+.avatar button {
+  background-color: #222222;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-.status.inactive {
-  background-color: #f8d7da;
-  color: #721c24;
-}

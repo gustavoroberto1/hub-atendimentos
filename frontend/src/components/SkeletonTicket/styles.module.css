@@ -21,6 +21,6 @@
 .clientInfo {
   display: flex;
   flex-direction: column;
-  align-items: start !important;
+  align-items: flex-start !important;
   gap: 4px;
 }
