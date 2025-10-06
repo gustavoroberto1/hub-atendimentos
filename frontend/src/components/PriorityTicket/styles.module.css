@@ -1,0 +1,45 @@
+.priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.high {
+  background-color: #FFE4E6;
+  color: #9F1239;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.medium {
+  background-color: #FEF3C7;
+  color: #92400E;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.low {
+  background-color: #F3F4F6;
+  color: #374151;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.critical {
+  background-color: #FEE2E2;
+  color: #7F1D1D;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  width: fit-content;
+}

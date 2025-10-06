@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  line-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.container h1 {
+  font-size: 28px;
+  color: #222222;
+  font-family: "Poppins";
+}
+
+.container h2 {
+  font-size: 40px;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: #222222;
+}
+
+.containerMain {
+  margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+  line-height: 22px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.containerMain h1 {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-family: "Poppins";
+}
+
+.containerMain h2 {
+  font-size: 36px;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: #FFFFFF;
+}

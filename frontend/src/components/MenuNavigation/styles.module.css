@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.backgroundMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #222222;
+  z-index: -10;
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+.backgroundMenu.closed {
+  width: 57px;
+}
+
+.backgroundMenu.open {
+  width: 230px;
+}
+
+.drawerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222222;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+.drawerWrapper.closed {
+  width: 56px
+}
+
+.drawerWrapper.open {
+  width: 230px;
+}
+
+@media (min-width: 600px) {
+  .drawerWrapper.closed {
+    width: 54px;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+}
+
+.dividerMenu {
+  border-color: #ffffff !important;
+}
+
+.childrenBody {
+  overflow-x: hidden;
+  padding: 16px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  padding: 40px;
+}
+
+.childrenBody.closed {
+  margin-left: 64px;
+  transition: margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+.childrenBody.open {
+  margin-left: 230px;
+  transition: margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
