@@ -1,6 +1,7 @@
-import { LuTicketSlash } from "react-icons/lu";
+import { LuBuilding2, LuTicketSlash } from "react-icons/lu";
 import { Textfield } from "../Textfield";
 import styles from "./styles.module.css";
+import { ImLocation2 } from "react-icons/im";
 
 type Props = {
   onGoBack: () => void;
@@ -11,7 +12,7 @@ export function ClientForm({ onGoBack }: Props) {
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <LuTicketSlash color="#000000" size={20} />
+        <LuBuilding2  color="#000000" size={20} />
         <h2>Dados do Cliente</h2>
       </div>
 
@@ -38,7 +39,7 @@ export function ClientForm({ onGoBack }: Props) {
         </div>
 
         <div className={styles.cardHeader} style={{ marginTop: "20px" }}>
-          <LuTicketSlash color="#000000" size={20} />
+          <ImLocation2  color="#000000" size={20} />
           <h2>Endereço</h2>
         </div>
 

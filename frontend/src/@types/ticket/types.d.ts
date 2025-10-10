@@ -6,7 +6,7 @@ type TTicket = {
   clientName: string
   type: "corrective" | "adaptive" | "predictive" | "preventive"
   priority: "low" | "medium" | "high" | "critical"
-  status: "open" | "in-progress" | "waiting" | "resolved" | "closed"
+  status: "new" | "in-progress" | "in-validation" | "finished" | "cancel";
   assigneeId?: string
   assigneeName?: string
   createdAt: string

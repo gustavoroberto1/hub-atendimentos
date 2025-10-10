@@ -4,17 +4,17 @@ import styles from "./styles.module.css";
 export function StatusTicket({
   status,
 }: {
-  status: "open" | "in-progress" | "waiting" | "resolved" | "closed";
+  status: "new" | "in-progress" | "in-validation" | "finished" | "cancel";
 }) {
   function getStatusName(status: string) {
     switch (status) {
-      case "open":
-        return "Aberto";
+      case "new":
+        return "Novo";
       case "in-progress":
         return "Em Andamento";
-      case "waiting":
+      case "in-validation":
         return "Aguardando";
-      case "resolved":
+      case "finished":
         return "Resolvido";
       case 'closed':
         return "Fechado";
@@ -25,15 +25,15 @@ export function StatusTicket({
 
   function getIcon(status: string) {
     switch (status) {
-      case "open":
+      case "new":
         return <MdNewReleases size={16}/>;
       case "in-progress":
         return <MdSchedule size={16}/>;
-      case "waiting":
+      case "in-validation":
         return <MdHistory size={16}/>;
-      case "resolved":
+      case "finished":
         return <MdCheckCircle size={16}/>;
-      case "closed":
+      case "cancel":
         return <MdCancel size={16}/>;
       default:
         return "⚪";
