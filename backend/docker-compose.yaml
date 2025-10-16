@@ -1,29 +1,18 @@
 version: "3.9"
 services:
-  mongo:
-    image: mongo:7
-    container_name: mongo
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
-      MONGO_REPLICA_SET_NAME: rs0
-    command: >
-      bash -c "
-        mongod --replSet rs0 --bind_ip_all --fork --logpath /var/log/mongodb.log &&
-        sleep 5 &&
-        mongosh --eval \"
-          rs.initiate({
-            _id: 'rs0',
-            members: [{ _id: 0, host: 'localhost:27017' }]
-          })
-        \" &&
-        tail -f /var/log/mongodb.log
-      "
-    volumes:
-      - mongo_data:/data/db
+  postgres:
+      image: postgres:latest
+      container_name: postgres
+      environment:
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_DB=iot
+        - TZ=America/Sao_Paulo
+      ports:
+        - "5435:5432"
+      volumes:
+        - pg_data:/var/lib/postgresql/data
+      restart: unless-stopped
 
 volumes:
-  mongo_data:
+  pg_data:

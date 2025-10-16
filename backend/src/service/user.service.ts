@@ -24,10 +24,11 @@ class UserService {
       name: name,
       email: email,
       password: passwordHashed,
-      avatar: null,
+      avatar_url: null,
       role: role,
       created_at: new Date(),
       updated_at: new Date(),
+      client_id: null
     };
 
     await prisma.user.create({ data: user });
@@ -49,7 +50,7 @@ class UserService {
       name: user.name,
       email: user.email,
       role: user.role,
-      avatar_url: user.avatar,
+      avatar_url: user.avatar_url,
       createdAt: user.created_at,
       updatedAt: user.updated_at,
     };

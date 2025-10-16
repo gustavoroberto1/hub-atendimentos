@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { userService } from "../service/client.service";
+import { userService } from "../service/user.service";
 
 export class UserController {
   constructor(private readonly service = userService) {}

@@ -14,16 +14,18 @@ enum Role {
 }
 
 model User {
-  id         String   @id
-  name       String
-  email      String   @unique
-  password   String
-  role       Role
-  avatar_url String?
-  created_at DateTime
-  updated_at DateTime @updatedAt
-  client_id  String?
-  client     Client?  @relation(fields: [client_id], references: [id])
+  id          String   @id
+  name        String
+  email       String   @unique
+  password    String
+  role        Role
+  avatar_url  String?
+  created_at  DateTime
+  updated_at  DateTime @updatedAt
+  client_id   String?
+  client      Client?  @relation(fields: [client_id], references: [id])
+  created_by  Ticket[] @relation(name: "created_by")
+  responsible Ticket[] @relation(name: "responsible")
 
   @@map("users")
 }
@@ -56,6 +58,54 @@ model Client {
   deleted         Boolean   @default(false)
   deleted_at      DateTime?
   User            User[]
+  Ticket          Ticket[]
 
   @@map("clients")
+}
+
+enum Priorit {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum TypeMaintenance {
+  CORRECTIVE
+  ADAPTIVE
+  PREDICTIVE
+  PREVENTIVE
+}
+
+enum Status {
+  NEW
+  IN_PROGRESS
+  IN_VALIDATION
+  FINISHED
+  CANCEL
+}
+
+model Ticket {
+  id               String          @id
+  ticket_number    String          @unique
+  title            String
+  description      String
+  type_maintenance TypeMaintenance
+  priorit          Priorit
+  estimative_hours Decimal
+  observation      String?
+  status           Status
+  created_at       DateTime
+  updated_at       DateTime        @updatedAt
+
+  created_by_id String
+  created_by    User   @relation(name: "created_by", fields: [created_by_id], references: [id])
+
+  responsible_id String?
+  responsible    User?   @relation(name: "responsible", fields: [responsible_id], references: [id])
+
+  client_id String
+  client    Client @relation(fields: [client_id], references: [id])
+
+  @@map("tickets")
 }

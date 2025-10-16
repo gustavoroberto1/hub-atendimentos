@@ -5,10 +5,10 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastify from "fastify";
 import path from "path";
 import { swaggerConfig } from "./config/swagger";
-import { profileController } from "./controller/ProfileController";
 import authJwt from "./middleware/authJwt";
 import { clientRoutes } from "./routes/client.routes";
 import { userRoutes } from "./routes/user.routes";
+import { ticketRoutes } from "./routes/ticket.routes";
 
 const app = fastify();
 
@@ -32,7 +32,7 @@ app.register(fastifySwaggerUi, {
 app.register(authJwt);
 app.register(userRoutes, { prefix: "/user" });
 app.register(clientRoutes, { prefix: "/client" });
-app.register(profileController);
+app.register(ticketRoutes, { prefix: "/ticket" })
 
 app.register(require("@fastify/static"), {
   root: path.join(__dirname, "uploads"),

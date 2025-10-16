@@ -26,3 +26,7 @@ type TClient = TCreateClient & {
 };
 
 type TUpdateClient = Partial<TCreateClient>;
+
+type TClientId = {
+  id: string
+}
