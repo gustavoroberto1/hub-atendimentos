@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -14,102 +14,48 @@ enum Role {
 }
 
 model User {
-  id                      String       @id @map("_id")
-  name                    String
-  email                   String       @unique
-  password                String
-  role                    Role
-  avatar                  String?
-  created_at              DateTime
-  updated_at              DateTime     @updatedAt
-  created_attendances     Attendance[] @relation("created_by_id")
-  responsible_attendances Attendance[] @relation("responsible_id")
+  id         String   @id
+  name       String
+  email      String   @unique
+  password   String
+  role       Role
+  avatar_url String?
+  created_at DateTime
+  updated_at DateTime @updatedAt
+  client_id  String?
+  client     Client?  @relation(fields: [client_id], references: [id])
 
   @@map("users")
 }
 
-type Contact {
-  phone String[]
-  email String[]
-}
-
-type Address {
+model Address {
+  id           String   @id
   postal_code  String
-  state_code   String
+  state        String
   city         String
-  neighborhood String
   street       String
-  number       Int
+  neighborhood String
+  number       Decimal
+  complement   String?
+  created_at   DateTime
+  updated_at   DateTime @updatedAt
+  Client       Client[]
 }
 
 model Client {
-  id         String       @id @map("_id")
-  name       String
-  document   String       @unique
-  contact    Contact
-  address    Address[]
-  is_active  Boolean
-  Attendance Attendance[]
+  id              String    @id
+  document        String    @unique
+  name            String
+  enterprise_name String
+  email           String
+  phone           String[]
+  address_id      String
+  address         Address   @relation(fields: [address_id], references: [id])
+  created_at      DateTime
+  updated_at      DateTime  @updatedAt
+  deleted         Boolean   @default(false)
+  deleted_at      DateTime?
+  User            User[]
 
   @@map("clients")
-}
-
-enum AttendanceType {
-  CORRECTIVE
-  ADAPTIVE
-  PREDICTIVE
-  PREVENTIVE
-}
-
-enum Priorit {
-  LOW
-  MEDIUM
-  HIGH
-  CRITICAL
-}
-
-enum Status {
-  OPEN
-  PROCESSING
-  VALIDATION
-  COMPLETED
-}
-
-type Author {
-  id    String
-  name  String
-  email String
-}
-
-type Comment {
-  id         String
-  author     Author
-  text       String
-  created_at DateTime
-  updated_at DateTime
-}
-
-model Attendance {
-  id                     String         @id @map("_id")
-  title                  String
-  description            String
-  attendance_type        AttendanceType
-  priorit                Priorit
-  status                 Status
-  estimate_hours         Int
-  additional_observation String
-  created_at             DateTime
-  updated_at             DateTime
-  comments               Comment[]
-
-  client    Client @relation(fields: [client_id], references: [id], onDelete: Restrict)
-  client_id String
-
-  created_by    User   @relation(name: "created_by_id", fields: [created_by_id], references: [id], onDelete: Restrict)
-  created_by_id String
-
-  responsible    User?   @relation(name: "responsible_id", fields: [responsible_id], references: [id], onDelete: SetNull)
-  responsible_id String?
-
-  @@map("attendances")
 }
